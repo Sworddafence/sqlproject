@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Favorite Games</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #555;
+        }
+        input[type="text"], input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        input[type="range"] {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        span {
+            display: block;
+            text-align: right;
+            margin-bottom: 20px;
+            color: #555;
+        }
+    </style>
+    <script>
+        function updateLabel() {
+            const operation = document.getElementById('operation');
+            const operationLabel = document.getElementById('operation_label');
+            operationLabel.innerText = operation.value == 0 ? 'Add' : 'Delete';
+        }
+
+        window.onload = function() {
+            updateLabel();
+            document.getElementById('operation').addEventListener('input', updateLabel);
+        }
+    </script>
+</head>
+<body>
+    <h1>Change Favorite Games</h1>
+    <form action="/changefavoritegames" method="post">
+        <label for="game_name">Enter Game Name:</label>
+        <input type="text" id="game_name" name="game_name" required><br><br>
+
+        <label for="operation">Operation:</label>
+        <input type="range" id="operation" name="operation" min="0" max="1" value="0" step="1">
+        <span id="operation_label">Delete</span><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .info {
+            margin-bottom: 20px;
+        }
+
+        .info label {
+            font-weight: bold;
+        }
+
+        .info p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>View Profile</h1>
+        <div class="info">
+            <label>Favorite Games:</label>
+            <p>{{ favorite_games }}</p>
+        </div>
+        <div class="info">
+            <label>Phone Number:</label>
+            <p>{{ phone_number }}</p>
+        </div>
+        <div class="info">
+            <label>Overdue Games:</label>
+            <p>{{ overdue_games }}</p>
+        </div>
+    </div>
+</body>
+</html>

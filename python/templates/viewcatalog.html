@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Catalog</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+            text-align: left;
+        }
+    </style>
+    <script>
+        function updateLabels() {
+            const operation = document.getElementById('operation');
+            const operationLabel = document.getElementById('operation_label');
+            operationLabel.innerText = operation.value == 0 ? 'Genre' : 'Price';
+
+            const operation1 = document.getElementById('operation1');
+            const operation1Label = document.getElementById('operation1_label');
+            operation1Label.innerText = operation1.value == 0 ? 'Ascending' : 'Descending';
+        }
+
+        window.onload = function() {
+            updateLabels();
+            document.getElementById('operation').addEventListener('input', updateLabels);
+            document.getElementById('operation1').addEventListener('input', updateLabels);
+        }
+    </script>
+</head>
+<body>
+    <h1>View Catalog</h1>
+
+    <form action="/viewcatalog" method="post">
+        <label for="searchterms">Enter Search terms:</label>
+        <input type="text" id="searchterms" name="searchterms" required><br><br>
+
+        <label for="operation">Sort by:</label>
+        <input type="range" id="operation" name="operation" min="0" max="1" value="0" step="1">
+        <span id="operation_label">Price</span><br><br>
+
+        <label for="operation1">Order:</label>
+        <input type="range" id="operation1" name="operation1" min="0" max="1" value="0" step="1">
+        <span id="operation1_label">Ascending</span><br><br>
+
+        <input type="submit" value="Submit">
+
+        <h4>{{ cool }}</h4>
+
+    </form>
+    <hr>
+    <div>
+        {{ catalog|safe }}
+    </div>
+</body>
+</html>
